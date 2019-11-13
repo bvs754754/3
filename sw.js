@@ -70,3 +70,12 @@ workbox.precaching.precacheAndRoute([
        '/css/style2.css'
        ]);
 
+workbox.routing.registerRoute(
+  // Cache CSS files.
+  /\.css$/,
+  // Use cache but update in the background.
+  new workbox.strategies.StaleWhileRevalidate({
+    // Use a custom cache name.
+    cacheName: 'css-cache',
+  })
+);
